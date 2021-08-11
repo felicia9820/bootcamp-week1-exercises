@@ -10,6 +10,16 @@ const assert = require('assert')
  */
 
 const hasFalsyValue = obj => {
+  const {a, ...rest} = obj
+  console.log(a)
+  console.log(rest)
+  if (!a) {
+    return true
+  } else if (!!a & !rest) {
+    return false
+  } else {
+    return hasFalsyValue(rest)
+  }
 };
 
 const falsyObj = {
